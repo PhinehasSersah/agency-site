@@ -8,7 +8,7 @@ import { BsCart2 } from "react-icons/bs";
 const Header = () => {
   const navItems = ["Home", "Shop", "Product", "Blog", "Page"];
   return (
-    <header className="w-full h-28 flex justify-between items-center bg-white">
+    <header className="w-full h-28 flex justify-between items-center bg-white sticky top-0">
       <h1 className="font-incon text-3xl font-bold ml-10">
         P<span className="text-xl text-yellow-700">EARL</span>Y
       </h1>
@@ -26,7 +26,7 @@ const Header = () => {
         })}
       </nav>
       <div className=" flex mr-10 w-64 h-10 justify-evenly items-center relative bg-blac">
-            <div className="w-4 h-4 rounded-full absolute right-3 top-0">0</div>
+            <div className="w-4 h-4 rounded-full absolute font-bold right-3 top-0">0</div>
 
         <a>
           <BsSearch size="1.5em" />
