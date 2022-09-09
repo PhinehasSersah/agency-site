@@ -5,10 +5,14 @@ import { Carousel } from "react-responsive-carousel";
 
 const HeroBlok = ({ blok }) => {
   return (
-    <main className="w-screen h-screen bg-slate-500" {...storyblokEditable}>
+    <main {...storyblokEditable}>
       <Carousel>
-        <Image />
+        {/* <Carousel> */}
+        <div className="flex">
+          <img src={blok.image.filename} alt={blok.image._uid} />
+        </div>
 
+        {/* </Carousel> */}
       </Carousel>
     </main>
   );

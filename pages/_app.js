@@ -3,10 +3,12 @@ import { storyblokInit, apiPlugin } from "@storyblok/react";
 import "tailwindcss/tailwind.css";
 import Hero from "../components/Home/Hero";
 import HeroBlok from "../components/Home/HeroBlok";
+import Page from "../components/Home/Page";
 
 const components = {
   Hero: Hero,
   heroblok: HeroBlok,
+  Page: Page
 
 };
 
