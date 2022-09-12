@@ -8,7 +8,11 @@ module.exports = {
     extend: {
       fontFamily: {
         incon: ['Inconsolata', ]
-      }
+      },
+      colors: {
+        // gold: ""
+      
+      },
     },
   },
   plugins: [],

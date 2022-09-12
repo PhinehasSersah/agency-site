@@ -8,7 +8,7 @@ import { BsCart2 } from "react-icons/bs";
 const Header = () => {
   const navItems = ["Home", "Shop", "Product", "Blog", "Page"];
   return (
-    <header className="w-full h-28 flex justify-between items-center bg-white sticky top-0">
+    <header className="w-full h-28 flex justify-between items-center bg-white sticky top-0 z-30">
       <h1 className="font-incon text-3xl font-bold ml-10">
         P<span className="text-xl text-yellow-700">EARL</span>Y
       </h1>

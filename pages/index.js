@@ -12,7 +12,7 @@ import {
 
 export default function Home({ story }) {
   story = useStoryblokState(story);
-  console.log(story);
+  // console.log(story);
   return (
     <>
       <Head>

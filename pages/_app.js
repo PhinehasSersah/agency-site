@@ -1,12 +1,12 @@
 import Layout from "../components/Layouts";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import "tailwindcss/tailwind.css";
-import Hero from "../components/Home/Hero";
+import Section from "../components/Home/Section";
 import HeroBlok from "../components/Home/HeroBlok";
 import Page from "../components/Home/Page";
 
 const components = {
-  Hero: Hero,
+  section: Section,
   heroblok: HeroBlok,
   Page: Page
 
