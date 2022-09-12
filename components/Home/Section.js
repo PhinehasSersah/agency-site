@@ -10,6 +10,7 @@ const Section = ({ nestedBlok }) => {
         className="w object-cover"
         width={455}
         height={385}
+        layout="responsive"
       />
       <h1 className="absolute bottom-16 left-[50%] translate-x-[-50%] uppercase text-[22px] tracking-widest leading-8 font-incon font-thin">
         {nestedBlok.title}

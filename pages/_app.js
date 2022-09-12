@@ -4,11 +4,13 @@ import "tailwindcss/tailwind.css";
 import Section from "../components/Home/Section";
 import HeroBlok from "../components/Home/HeroBlok";
 import Page from "../components/Home/Page";
+import Categories from "../components/Home/Categories"
 
 const components = {
   section: Section,
   heroblok: HeroBlok,
-  Page: Page
+  Page: Page,
+  categories: Categories
 
 };
 
