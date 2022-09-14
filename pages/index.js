@@ -10,17 +10,19 @@ import {
   useStoryblokState,
 } from "@storyblok/react";
 
-export default function Home({ story }) {
-  story = useStoryblokState(story);
-  // console.log(story);
+export default function Home({ story, }) {
+  story = useStoryblokState(story, {
+    resolve_relations: ["trending.shop"]
+  });
+  console.log(story);
   return (
     <>
       <Head>
-      <title>Pearly Jewelries </title>
+        <title>Pearly Jewelries </title>
       </Head>
       {/* <div className="text-center text-3xl">I am coming for you</div> */}
       {/* <Hero /> */}
-      <StoryblokComponent blok={story.content} />
+      <StoryblokComponent blok={story.content}  />
     </>
   );
 }
@@ -28,6 +30,7 @@ export default function Home({ story }) {
 export async function getStaticProps() {
   let params = {
     version: "draft",
+    resolve_relations: ["trending.shop_folder"],
   };
 
   const storyblokApi = getStoryblokApi();

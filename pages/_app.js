@@ -5,13 +5,14 @@ import Section from "../components/Home/Section";
 import HeroBlok from "../components/Home/HeroBlok";
 import Page from "../components/Home/Page";
 import Categories from "../components/Home/Categories"
+import Trending from "../components/Home/Trending";
 
 const components = {
   section: Section,
   heroblok: HeroBlok,
   Page: Page,
-  categories: Categories
-
+  categories: Categories,
+  trending: Trending,
 };
 
 storyblokInit({

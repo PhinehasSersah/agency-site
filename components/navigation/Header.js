@@ -6,7 +6,7 @@ import { VscAccount } from "react-icons/vsc";
 import { BsCart2 } from "react-icons/bs";
 
 const Header = () => {
-  const navItems = ["Home", "Shop", "Product", "Blog", "Page"];
+  const navItems = ["Home", "Shop", "Blog", "Page"];
   return (
     <header className="w-full h-28 flex justify-between items-center bg-white sticky top-0 z-30">
       <h1 className="font-incon text-3xl font-bold ml-10">
@@ -17,7 +17,7 @@ const Header = () => {
           return (
             <li className="list-none mx-8 " key={index}>
               <Link href={index === 0 ? "/" : item.toLowerCase()}>
-                <a className="tracking-wider capitalize text-[18px] font-incon">
+                <a className="tracking-widest uppercase text-[13px] font-incon">
                   {item}
                 </a>
               </Link>
