@@ -14,8 +14,6 @@ const Trending = ({ nestedBlok, index }) => {
   const onMouseLeave = () => {
     setRenderedImage(0);
   };
-
-  console.log(nestedBlok);
   return (
     <div className="w-80 h-full">
       <Link href={`/shop/${nestedBlok.title}`}>
@@ -41,7 +39,7 @@ const Trending = ({ nestedBlok, index }) => {
           {index === 0 ? (
             <AiTwotoneStar className="text-yellow-700" />
           ) : index === 2 ? (
-            <div className="flex">
+            <div className="flex justify-evenly w-16">
               <AiTwotoneStar className="text-yellow-700" size="1.3em"/>{" "}
               <AiTwotoneStar className="text-yellow-700" size="1.3em"/>
               <AiTwotoneStar className="text-yellow-700" size="1.3em"/>{" "}

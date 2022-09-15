@@ -14,14 +14,11 @@ export default function Home({ story, }) {
   story = useStoryblokState(story, {
     resolve_relations: ["trending.shop"]
   });
-  console.log(story);
   return (
     <>
       <Head>
         <title>Pearly Jewelries </title>
       </Head>
-      {/* <div className="text-center text-3xl">I am coming for you</div> */}
-      {/* <Hero /> */}
       <StoryblokComponent blok={story.content}  />
     </>
   );

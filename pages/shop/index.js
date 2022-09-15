@@ -24,8 +24,8 @@ export async function getStaticProps() {
   };
 
   const storyblokApi = getStoryblokApi();
-  let { data } = await storyblokApi.get(`cdn/stories/shop`, params);
-  console.log(data);
+  let { data } = await storyblokApi.get(`cdn/stories/shop_folder/shop`, params);
+  // console.log(data);
 
   return {
     props: {

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const HeroBlok = ({ nestedBlok }) => {
   return (
-    <div {...storyblokEditable(nestedBlok)}>
+    <div className="w-screen h-[80vh]" {...storyblokEditable(nestedBlok)}>
       <div>
         <img
           src={nestedBlok.image.filename}

@@ -1,16 +1,13 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
-
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-
 import Link from "next/link";
 import HeroBlok from "./HeroBlok";
 import Section from "./Section";
 import Categories from "./Categories";
-// import Collections from "./Collections";
-import { BsLock } from "react-icons/bs";
-import Trending from "./Trending";
 import Summer from "./Summer";
+import Trending from "./Trending";
+// import Footer from "../navigation/Footer";
 
 const Page = ({ blok }) => (
   <main {...storyblokEditable(blok)} className="relative block">
@@ -66,15 +63,19 @@ const Page = ({ blok }) => (
     {/* trending  */}
 
     <div className="mt-20">
-      <h2 className="text-center my-12 font-incon text-2xl tracking-widest uppercase">Trending Product</h2>
+      <h2 className="text-center my-12 font-incon text-2xl tracking-widest uppercase">
+        Trending Product
+      </h2>
       <div className="w-full h-[40vh] flex mx-auto mb-20 justify-evenly gap-6">
         {blok.trending_product.map((nestedBlok, index) => (
           <div className="h-full " key={index}>
-            <Trending nestedBlok={nestedBlok} index={index}/>
+            <Trending nestedBlok={nestedBlok} index={index} />
           </div>
         ))}
       </div>
     </div>
+    <hr className="w-full h-2 text-black my-28" />
+    {/* <Footer /> */}
   </main>
 );
 
