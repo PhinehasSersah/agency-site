@@ -19,16 +19,16 @@ const Trending = ({ nestedBlok, index }) => {
       <Link href={`/shop/${nestedBlok.title}`}>
         <a>
           <div
-            className="w-full h-4/5"
+            className="w-full h-[264px] shadow-xl"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
           >
             <Image
               src={nestedBlok.image[rederedImage]?.filename}
               alt={nestedBlok.title}
-              className="w object-cover transition-all ease-in-out duration-300"
+              className=" object-cover w-full transition-all ease-in-out duration-300"
               width={230}
-              height={185}
+              height={190}
               layout="responsive"
             />
           </div>
