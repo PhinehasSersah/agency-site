@@ -1,4 +1,4 @@
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
+import { storyblokEditable,useStoryblokState, StoryblokComponent } from "@storyblok/react";
 import ShopHero from "./ShopHero";
 import Trending from "../Home/Trending";
 import { BsChevronCompactDown } from "react-icons/bs";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import Icons from "./Icons";
 
 const ProductPage = ({ blok }) => {
+  blok = useStoryblokState(blok)
   const scrollDown = () => {};
   return (
     <main className="w-full " {...storyblokEditable(blok)}>
@@ -16,17 +17,17 @@ const ProductPage = ({ blok }) => {
       </div>
       <div className="flex ">
         <div className="w-[24vw] h-96 mt-40 mx-auto">
-          <h1 className="font-incon uppercase font-bold tracking-widest text-center mb-8">
+          <h1 className="font-incon uppercase font-bold tracking-widest text-center mb-14">
             Featured Product
           </h1>
           {blok.product_page?.slice(7, 11).map((item, index) => (
             <div
               key={index}
-              className="w-11/12 h-36 my-10 flex items-center bg-blck"
+              className="w-11/12 h-36 my-10 flex items-center border-b"
             >
               <Link href="#">
-                <a className="h-36 w-1/2 px-3 mt-1">
-                  <div className="h-full w-full mx-2">
+                <a className="h-36 w-1/2 px-3 grid place-items-center">
+                  <div className="h-full w-full mx-2 mb-1">
                     <Image
                       src={item.image[1].filename}
                       width={80}

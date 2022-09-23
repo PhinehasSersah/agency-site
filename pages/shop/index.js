@@ -8,6 +8,8 @@ import Head from "next/head";
 const Shop = ({ story }) => {
   story = useStoryblokState(story);
 
+  
+
   return (
     <div>
       <Head>
@@ -25,8 +27,6 @@ export async function getStaticProps() {
 
   const storyblokApi = getStoryblokApi();
   let { data } = await storyblokApi.get(`cdn/stories/shop_folder/shop`, params);
-  // console.log(data);
-
   return {
     props: {
       story: data ? data.story : false,
