@@ -19,7 +19,6 @@ const ProductPage = ({ blok }) => {
           <h1 className="font-incon uppercase font-bold tracking-widest text-center mb-8">
             Featured Product
           </h1>
-
           {blok.product_page?.slice(7, 11).map((item, index) => (
             <div
               key={index}
@@ -43,7 +42,6 @@ const ProductPage = ({ blok }) => {
                 <h4 className="font-incon uppercase text-sm tracking-widest text-center">
                   {item.title}
                 </h4>
-
                 <p className="font-semibold text-yellow-600 text-center">
                   $ {item.price}
                 </p>
@@ -64,8 +62,8 @@ const ProductPage = ({ blok }) => {
             </div>
 
             {blok.product_page?.map((item, index) => (
-              <div key={index} className="my-5 relative">
-                <div className="absolute z-20 bottom-24 right-4">
+              <div key={index} className="my-5 relative group">
+                <div className="absolute z-20 bottom-24 right-4 hidden group-hover:block">
                   <Icons />
                 </div>
                 <Trending nestedBlok={item} index={index} />
