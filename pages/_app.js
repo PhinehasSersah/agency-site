@@ -4,19 +4,21 @@ import "tailwindcss/tailwind.css";
 import Section from "../components/Home/Section";
 import HeroBlok from "../components/Home/HeroBlok";
 import Page from "../components/Home/Page";
-import Categories from "../components/Home/Categories"
+import Categories from "../components/Home/Categories";
 import Trending from "../components/Home/Trending";
 import ProductPage from "../components/Shop/ProductPage";
 import Summer from "../components/Home/Summer";
+// import Item from "../components/Shop/Item";
 
 const components = {
-  section: Section, 
+  section: Section,
   heroblok: HeroBlok,
   Page: Page,
   categories: Categories,
-  "trending_produc": Trending,
+  trending_produc: Trending,
   Product: ProductPage,
-  summer : Summer,
+  summer: Summer,
+  // product_page: Item,
 };
 
 storyblokInit({

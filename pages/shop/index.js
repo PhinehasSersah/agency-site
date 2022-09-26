@@ -8,8 +8,6 @@ import Head from "next/head";
 const Shop = ({ story }) => {
   story = useStoryblokState(story);
 
-  
-
   return (
     <div>
       <Head>

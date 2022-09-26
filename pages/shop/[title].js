@@ -1,17 +1,17 @@
 import Head from "next/head";
 import Layout from "../../components/Layouts";
+import Item from "../../components/Shop/Item";
 
 import {
   useStoryblokState,
   getStoryblokApi,
   StoryblokComponent,
 } from "@storyblok/react";
-const Items = ({ story }) => {
-  story = useStoryblokState(story);
-  console.log(story);
-  return <main className="w-full h-screen text-center">{story[0].title}</main>;
+const StoreItem = ({ story }) => {
+  // story = useStoryblokState(story);
+  return <main className="w-full h-screen"> <Item blok={story[0]} /> </main>;
 };
-export default Items;
+export default StoreItem;
 
 export async function getStaticProps({ params }) {
   const { title } = params;
