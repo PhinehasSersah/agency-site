@@ -3,11 +3,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import "./Carousel.module.css";
 import { BiHeart } from "react-icons/bi";
+import { useContext } from "react";
+import CartContext from "../context/CartContext";
 
 const Item = ({ blok }) => {
   const [count, setCount] = useState(1);
-  console.log(blok);
+  const [subTotal, setSubTotal] = useState(Number(blok.price) * count);
 
+  const { cart, wishList, setCart, setWishList } = useContext(CartContext);
+  console.log(cart);
   const increment = () => {
     if (count === Number(blok.stock)) return;
     setCount(count + 1);
@@ -15,6 +19,14 @@ const Item = ({ blok }) => {
   const decrement = () => {
     if (count === 1) return;
     setCount(count - 1);
+  };
+  const addToCart = () => {
+    blok.totalPrice = Number(blok.price) * count;
+    setCart((prev) => [...prev, blok]);
+  };
+  const addToWishList = () => {
+    blok.totalPrice = Number(blok.price) * count;
+    setWishList((prev) => [...prev, blok]);
   };
   return (
     <div className="w-full h-full flex">
@@ -24,7 +36,7 @@ const Item = ({ blok }) => {
           showThumbs={true}
           autoPlay={true}
           showArrows={false}
-          width={550}
+          width={500}
         >
           {blok.image.map((item, index) => (
             <div key={index} className="h-4/5">
@@ -47,10 +59,16 @@ const Item = ({ blok }) => {
             $<span className="text-black ml-2">{blok.price}</span>
           </h2>
         </div>
-        <p className="p-6 font-incon text-xl leading-8 w-4/5">
+        <p className="p-6 font-incon text-[17px] leading-8 w-4/5">
           {blok.description}
         </p>
-        <div className="w-4/5 mx-auto px-6 flex h-14 justify-between mt-20">
+        {/* <div className="w-4/5 mx-auto px-6 flex h-14 justify-between mt-20">
+          <h2 className="font-incon font-semibold text-xl tracking-wider">
+            Subtotal
+          </h2>
+          <p className="font-semibold text-xl">$ {subTotal}</p>
+        </div> */}
+        <div className="w-4/5 mx-auto px-6 flex h-14 justify-between mt-2">
           <div className="w-3/12 h-full flex items-center border">
             <button
               className="font-bold w-10 h-full mx-2 text-2xl hover:text-yellow-700"
@@ -68,20 +86,25 @@ const Item = ({ blok }) => {
           </div>
 
           <div className="w-6/12 h-full">
-            <button className=" uppercase w-full h-full text-white bg-black hover:bg-yellow-700 font-semibold ">
+            <button
+              onClick={addToCart}
+              className=" uppercase w-full h-full text-white bg-black hover:bg-yellow-700 font-semibold "
+            >
               Add to Cart
             </button>
           </div>
 
           <div className="w-2/12 h-full border grid place-items-center">
-            <button className="">
+            <button onClick={addToWishList} className="">
               {" "}
               <BiHeart size="1.5em" className=" hover:text-yellow-700 " />
             </button>
           </div>
         </div>
         <div className="w-4/5 mx-auto px-6 flex h-14 justify-between mt-10">
-            <button className="uppercase text-white tracking-wide font-semibold w-full h-full bg-yellow-700 hover:bg-black transition ease-in-out delay-100">Buy now</button>
+          <button className="uppercase text-white tracking-wide font-semibold w-full h-full bg-yellow-700 hover:bg-black transition ease-in-out delay-100">
+            Buy now
+          </button>
         </div>
       </div>
     </div>
