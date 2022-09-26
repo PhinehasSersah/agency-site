@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import "./Carousel.module.css";
@@ -28,6 +28,8 @@ const Item = ({ blok }) => {
     blok.totalPrice = Number(blok.price) * count;
     setWishList((prev) => [...prev, blok]);
   };
+  const calculateSubtotal = () => setSubTotal(() => count * Number(blok.price));
+  useEffect(() => calculateSubtotal(), [count]);
   return (
     <div className="w-full h-full flex">
       <div className="w-3/5 h-full grid place-items-center">
@@ -62,13 +64,15 @@ const Item = ({ blok }) => {
         <p className="p-6 font-incon text-[17px] leading-8 w-4/5">
           {blok.description}
         </p>
-        {/* <div className="w-4/5 mx-auto px-6 flex h-14 justify-between mt-20">
+
+        {/* subtotal  */}
+        <div className="w-4/5 mx-auto px-6 flex h-14 justify-between mt-16">
           <h2 className="font-incon font-semibold text-xl tracking-wider">
             Subtotal
           </h2>
           <p className="font-semibold text-xl">$ {subTotal}</p>
-        </div> */}
-        <div className="w-4/5 mx-auto px-6 flex h-14 justify-between mt-2">
+        </div>
+        <div className="w-4/5 mx-auto px-6 flex h-14 justify-between mt-10">
           <div className="w-3/12 h-full flex items-center border">
             <button
               className="font-bold w-10 h-full mx-2 text-2xl hover:text-yellow-700"
