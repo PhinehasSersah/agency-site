@@ -7,11 +7,13 @@ import Section from "./Section";
 import Categories from "./Categories";
 import Summer from "./Summer";
 import Trending from "./Trending";
-// import Footer from "../navigation/Footer";
+import Cart from "../Shop/Cart";
+
 
 const Page = ({ blok }) => (
   <main {...storyblokEditable(blok)} className="relative block">
-    <Carousel
+    <Cart />
+    {/* <Carousel
       showStatus={false}
       showThumbs={false}
       autoPlay={true}
@@ -58,11 +60,11 @@ const Page = ({ blok }) => (
           <Summer nestedBlok={nestedBlok} />
         </div>
       ))}
-    </div>
+    </div> */}
 
     {/* trending  */}
 
-    <div className="mt-20">
+    {/* <div className="mt-20">
       <h2 className="text-center my-12 font-incon text-2xl tracking-widest uppercase">
         Trending Product
       </h2>
@@ -74,7 +76,7 @@ const Page = ({ blok }) => (
         ))}
       </div>
     </div>
-    <hr className="w-full h-2 text-black my-28" />
+    <hr className="w-full h-2 text-black my-28" /> */}
     {/* <Footer /> */}
   </main>
 );
