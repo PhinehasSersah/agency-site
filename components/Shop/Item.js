@@ -22,6 +22,7 @@ const Item = ({ blok }) => {
   };
   const addToCart = () => {
     blok.totalPrice = Number(blok.price) * count;
+    blok.userQuantity = count
     setCart((prev) => [...prev, blok]);
   };
   const addToWishList = () => {

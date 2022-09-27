@@ -1,14 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineCloseCircle, AiOutlineDelete } from "react-icons/ai";
-import Image from "next/image";
+import CartItem from "./CartItem";
+
 import CartContext from "../context/CartContext";
 
 const Cart = () => {
-  const { cart } = useContext(CartContext);
-  console.log(cart)
+  const { cart, setCart } = useContext(CartContext);
+  //   const [productQuantity, setProductQuantity] = useState();
+  console.log(cart);
+
+  // const increment = (product) => {
+  //   if (product.stock === product.userQuantity) return;
+  //   product.userQuantity += 1;
+  // };
+  const deleteItem = (product) => {
+    let filteredProduct = cart.filter((item) => item._uid !== product._uid);
+    setCart(filteredProduct);
+  };
   return (
     <div className="w-full h-screen flex">
-      <div className="w-2/3 h-full backdrop-brightness-75">rgerrregrgerg</div>
+      <div className="w-2/3 h-full backdrop-brightness-75"></div>
       <div className="w-1/3 h-full ">
         <div className="flex w-full h-16  justify-between  items-center">
           <h2 className="font-incon uppercase p-3 tracking-wider">Cart</h2>
@@ -19,29 +30,9 @@ const Cart = () => {
             cart.map((item, index) => (
               <div
                 key={index}
-                className="w-full  h-28 flex my-7 justify-between border-t"
+                className="w-full h-28 flex my-7 justify-between border-t"
               >
-                <div className="w-36 h-full ">
-                  <Image alt="Cart image" src={item.image[0].filename} width={20} height={15} layout="responsive"  className="object-cover"/>
-                </div>
-                <div className="w-56 h-full flex flex-col justify-between">
-                  <h3 className="uppercase text-center font-incon tracking-wide py-1">
-                    {item.title}
-                  </h3>
-                  <div className="h-12 w-2/3 mx-auto flex items-center border justify-between ">
-                    <button className="font-bold w-10 h-full mx-2 text-2xl hover:text-yellow-700">
-                      -
-                    </button>
-                    <p className="font-bold font-incon">{43}</p>
-                    <button className="font-bold w-10 h-full mx-2 text-xl hover:text-yellow-700">
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div className="flex  h-full flex-col justify-between mr-10">
-                  <AiOutlineDelete size="1.3rem" className="my-2 cursor-pointer" title="delete" />
-                  <p className="fon">$ {190}</p>
-                </div>
+                <CartItem item={item} index={index} deleteItem={deleteItem} />
               </div>
             ))}
         </div>
