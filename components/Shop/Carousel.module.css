@@ -2,3 +2,11 @@
     height: 40vh !important;
     background-color: blue !important;
 }
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}

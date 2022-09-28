@@ -24,7 +24,7 @@ const CartItem = ({ item, deleteItem }) => {
   useEffect(() => calculateSubtotal(), [quantity]);
   return (
     <>
-      <div className="w-36 h-full ">
+      <div className="w-36 h-full my-2 ">
         <Image
           alt="Cart image"
           src={item.image[0].filename}

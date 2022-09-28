@@ -5,13 +5,23 @@ import "./Carousel.module.css";
 import { BiHeart } from "react-icons/bi";
 import { useContext } from "react";
 import CartContext from "../context/CartContext";
+import Cart from "./Cart";
+import styles from "./Carousel.module.css";
+import SlidingPane from "react-sliding-pane";
+import "react-sliding-pane/dist/react-sliding-pane.css";
 
 const Item = ({ blok }) => {
   const [count, setCount] = useState(1);
   const [subTotal, setSubTotal] = useState(Number(blok.price) * count);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  // const [showCart, setShowCart] = useState(false);
+  const [showCart, setShowCart] = useState({
+    isPaneOpen: false,
+  });
 
   const { cart, wishList, setCart, setWishList } = useContext(CartContext);
-  console.log(cart);
+
   const increment = () => {
     if (count === Number(blok.stock)) return;
     setCount(count + 1);
@@ -26,18 +36,38 @@ const Item = ({ blok }) => {
       blok.totalPrice = Number(blok.price) * count;
       blok.userQuantity = count;
       setCart((prev) => [...prev, blok]);
+      setShowCart({ isPaneOpen: true });
+      setTimeout(() => setSuccess("Item added successfully"), 3000);
     } else {
+      setTimeout(() => setError("Item already in cart"), 1000);
       return;
     }
   };
   const addToWishList = () => {
-    blok.totalPrice = Number(blok.price) * count;
-    setWishList((prev) => [...prev, blok]);
+    const foundItem = wishList.find((item) => item.title === blok.title);
+    if (foundItem === undefined) {
+      setWishList((prev) => [...prev, blok]);
+    } else {
+      return;
+    }
   };
   const calculateSubtotal = () => setSubTotal(() => count * Number(blok.price));
   useEffect(() => calculateSubtotal(), [count]);
   return (
-    <div className="w-full h-full flex">
+    <div className="w-full h-full flex ">
+      {/* side pane  */}
+      <SlidingPane
+        width="40vw"
+        overlayClassName="some-custom-overlay-class"
+        isOpen={showCart.isPaneOpen}
+        onRequestClose={() => {
+          // triggered on "<" on left top click or on outside click
+          setShowCart({ isPaneOpen: false });
+        }}
+      >
+        <Cart setShowCart={setShowCart} />
+      </SlidingPane>
+
       <div className="w-3/5 h-full grid place-items-center">
         <Carousel
           showStatus={false}

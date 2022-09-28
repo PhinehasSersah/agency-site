@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BsSearch } from "react-icons/bs";
 import { FcLikePlaceholder } from "react-icons/fc";
 import { VscAccount } from "react-icons/vsc";
 import { BsCart2 } from "react-icons/bs";
+import CartContext from "../context/CartContext";
 
 const Header = () => {
+  const { cart } = useContext(CartContext);
+
   const navItems = ["Home", "Shop", "Blog", "Page"];
   return (
     <header className="w-full h-28 flex justify-between items-center bg-white sticky top-0 z-30">
@@ -26,7 +30,9 @@ const Header = () => {
         })}
       </nav>
       <div className=" flex mr-10 w-64 h-10 justify-evenly items-center relative bg-blac">
-            <div className="w-4 h-4 rounded-full absolute font-bold right-3 top-0">0</div>
+        <div className="w-4 h-4 rounded-full absolute font-bold right-3 top-0">
+          {cart.length}
+        </div>
 
         <a>
           <BsSearch size="1.5em" />
