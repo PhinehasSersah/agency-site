@@ -21,9 +21,14 @@ const Item = ({ blok }) => {
     setCount(count - 1);
   };
   const addToCart = () => {
-    blok.totalPrice = Number(blok.price) * count;
-    blok.userQuantity = count
-    setCart((prev) => [...prev, blok]);
+    const foundItem = cart.find((item) => item.title === blok.title);
+    if (foundItem === undefined) {
+      blok.totalPrice = Number(blok.price) * count;
+      blok.userQuantity = count;
+      setCart((prev) => [...prev, blok]);
+    } else {
+      return;
+    }
   };
   const addToWishList = () => {
     blok.totalPrice = Number(blok.price) * count;
