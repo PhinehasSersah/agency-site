@@ -14,7 +14,8 @@ const Item = ({ blok }) => {
   const [count, setCount] = useState(1);
   const [subTotal, setSubTotal] = useState(Number(blok.price) * count);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [wish, setWish] = useState("");
+  const [wishError, setWishError] = useState("");
   // const [showCart, setShowCart] = useState(false);
   const [showCart, setShowCart] = useState({
     isPaneOpen: false,
@@ -37,26 +38,26 @@ const Item = ({ blok }) => {
       blok.userQuantity = count;
       setCart((prev) => [...prev, blok]);
       setShowCart({ isPaneOpen: true });
-      setTimeout(() => setSuccess("Item added successfully"), 3000);
     } else {
-      setTimeout(() => setError("Item already in cart"), 1000);
-      return;
+      setError("Item already in cart");
+      setTimeout(() => setError(""), 2500);
     }
   };
   const addToWishList = () => {
     const foundItem = wishList.find((item) => item.title === blok.title);
     if (foundItem === undefined) {
       setWishList((prev) => [...prev, blok]);
+      setWish("Added to wish list");
+      setTimeout(() => setWish(""), 2500);
     } else {
-      return;
+      setWishError("Item already in wish list");
+      setTimeout(() => setWishError(""), 2500);
     }
   };
   const calculateSubtotal = () => setSubTotal(() => count * Number(blok.price));
   useEffect(() => calculateSubtotal(), [count]);
   return (
-    <div className="w-full h-full flex relative ">
-      <p className="w-fit h-fit absolute top-3 left-1/2 -translate-x-1/2 p-10 rounded-md shadow-md"></p>
-
+    <div className="w-full h-full flex">
       {/* side pane  */}
       <SlidingPane
         width="40vw"
@@ -89,7 +90,7 @@ const Item = ({ blok }) => {
           ))}
         </Carousel>
       </div>
-      <div className="w-2/5 h-full flex flex-col items-center">
+      <div className="w-2/5 h-full flex flex-col items-center relative">
         <div className="w-4/5 mx-auto border-b-[1px] p-6">
           <p>Breadcrumps</p>
           <h1 className="font-incon tracking-wider py-5 text-4xl">
@@ -103,10 +104,23 @@ const Item = ({ blok }) => {
           {blok.description}
         </p>
 
+        {/* Error message  */}
+        <div className="absolute top-96 left-1/2 -translate-x-1/2 rounded-md shadow-md w-fit grid place-content-center h-fit z-10">
+          <p className={`text-red-500 font-bold ${error ? "p-3" : ""}`}>
+            {error}
+          </p>
+          <p className={`text-red-500 font-bold ${wishError ? "p-3" : ""}`}>
+            {wishError}
+          </p>
+          <p className={`text-green-500 font-bold ${wish ? "p-3" : ""}`}>
+            {wish}
+          </p>
+        </div>
+
         {/* subtotal  */}
         <div className="w-4/5 mx-auto px-6 flex h-14 justify-between mt-16">
           <h2 className="font-incon font-semibold text-xl tracking-wider">
-            Subtotal
+            SubTotal
           </h2>
           <p className="font-semibold text-xl">$ {subTotal}</p>
         </div>
@@ -136,8 +150,11 @@ const Item = ({ blok }) => {
             </button>
           </div>
 
-          <div className="w-2/12 h-full border grid place-items-center">
-            <button onClick={addToWishList} className="">
+          <div
+            onClick={addToWishList}
+            className="w-2/12 h-full border grid place-items-center cursor-pointer"
+          >
+            <button className="">
               {" "}
               <BiHeart size="1.5em" className=" hover:text-yellow-700 " />
             </button>
