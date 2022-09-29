@@ -54,7 +54,9 @@ const Item = ({ blok }) => {
   const calculateSubtotal = () => setSubTotal(() => count * Number(blok.price));
   useEffect(() => calculateSubtotal(), [count]);
   return (
-    <div className="w-full h-full flex ">
+    <div className="w-full h-full flex relative ">
+      <p className="w-fit h-fit absolute top-3 left-1/2 -translate-x-1/2 p-10 rounded-md shadow-md"></p>
+
       {/* side pane  */}
       <SlidingPane
         width="40vw"

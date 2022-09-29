@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { AiOutlineDelete } from "react-icons/ai";
 
-const CartItem = ({ item, deleteItem }) => {
+const CartItem = ({ item, deleteItem, calculateTotal }) => {
   const [quantity, setQuantity] = useState(Number(item.userQuantity));
   const [subTotal, setSubTotal] = useState(
     Number(item.userQuantity) * Number(item.price)
@@ -21,10 +21,13 @@ const CartItem = ({ item, deleteItem }) => {
     setSubTotal(() => quantity * Number(item.price));
   };
 
-  useEffect(() => calculateSubtotal(), [quantity]);
+  useEffect(() => {
+    calculateTotal();
+    calculateSubtotal();
+  }, [quantity, subTotal]);
   return (
     <>
-      <div className="w-36 h-full my-2 ">
+      <div className="w-36 h-full my-2">
         <Image
           alt="Cart image"
           src={item.image[0].filename}
@@ -62,7 +65,9 @@ const CartItem = ({ item, deleteItem }) => {
           title="delete"
         />
 
-        <p className="fon">$ {subTotal}</p>
+        <p className="font-semibold text-yellow-700">
+          $ <span className="text-black price">{subTotal}</span>
+        </p>
       </div>
     </>
   );
