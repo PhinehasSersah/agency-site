@@ -10,7 +10,7 @@ import CartContext from "../context/CartContext";
 const Header = () => {
   const { cart } = useContext(CartContext);
 
-  const navItems = ["Home", "Shop", "Blog", "Page"];
+  const navItems = ["Home", "Shop", "Blog", "About Us"];
   return (
     <header className="w-full h-28 flex justify-between items-center bg-white sticky top-0 z-30">
       <h1 className="font-incon text-3xl font-bold ml-10">
@@ -20,7 +20,7 @@ const Header = () => {
         {navItems.map((item, index) => {
           return (
             <li className="list-none mx-8 " key={index}>
-              <Link href={index === 0 ? "/" : item.toLowerCase()}>
+              <Link href={index === 0 ? "/" : "/" + item.toLowerCase()}>
                 <a className="tracking-widest uppercase text-[13px] font-incon">
                   {item}
                 </a>

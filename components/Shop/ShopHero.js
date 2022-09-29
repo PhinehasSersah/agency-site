@@ -1,11 +1,14 @@
 import Image from "next/image";
-import heroImage from "../../public/perl.jpg";
+import heroImage from "../../public/hero.jpg";
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
 const ShopHero = ({ blok }) => {
-  // console.log(blok);
+
+
+
+  
   return (
     <div className="w-full h-[60vh] relative" {...storyblokEditable(blok)}>
       <div className="">
