@@ -3,13 +3,13 @@ import Image from "next/image";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const CartItem = ({ item, deleteItem, calculateTotal }) => {
-  const [quantity, setQuantity] = useState(Number(item.userQuantity));
+  const [quantity, setQuantity] = useState(Number(item?.userQuantity));
   const [subTotal, setSubTotal] = useState(
-    Number(item.userQuantity) * Number(item.price)
+    Number(item?.userQuantity) * Number(item?.price)
   );
 
   const increment = () => {
-    if (quantity === Number(item.stock)) return;
+    if (quantity === Number(item?.stock)) return;
     setQuantity(() => quantity + 1);
   };
   const decrement = () => {
@@ -18,7 +18,7 @@ const CartItem = ({ item, deleteItem, calculateTotal }) => {
   };
 
   const calculateSubtotal = () => {
-    setSubTotal(() => quantity * Number(item.price));
+    setSubTotal(() => quantity * Number(item?.price));
   };
 
   useEffect(() => {
@@ -27,19 +27,19 @@ const CartItem = ({ item, deleteItem, calculateTotal }) => {
   }, [quantity, subTotal]);
   return (
     <>
-      <div className="w-36 h-full my-2">
+      <div className="w-1/3 h-full my-2">
         <Image
           alt="Cart image"
-          src={item.image[0].filename}
-          width={20}
-          height={15}
+          src={item?.image[0].filename}
+          width={"100%"}
+          height={"57"}
           layout="responsive"
           className="object-cover"
         />
       </div>
       <div className="w-56 h-full flex flex-col justify-between">
         <h3 className="uppercase text-center font-incon tracking-wide py-1">
-          {item.title}
+          {item?.title}
         </h3>
         <div className="h-12 w-2/3 mx-auto flex items-center border justify-between ">
           <button

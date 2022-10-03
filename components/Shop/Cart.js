@@ -43,7 +43,7 @@ const Cart = ({ setShowCart }) => {
           cart.map((item, index) => (
             <div
               key={index}
-              className="w-full h-28 flex my-7 justify-between border-t"
+              className="w-full h-32 flex py-1 justify-between items-center border-t "
             >
               <CartItem
                 item={item}

@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['a.storyblok.com'],
+    allowFutureImage: true
   },
 }
 
